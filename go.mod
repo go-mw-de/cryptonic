@@ -1,4 +1,4 @@
-module cryptonic
+module gitlab.com/echtwerner/cryptonic
 
 go 1.16
 
