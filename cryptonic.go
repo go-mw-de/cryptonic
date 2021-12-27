@@ -4,7 +4,7 @@ package cryptonic
 
 import (
 	"crypto/rand"
-	b64 "encoding/base64"
+	"encoding/base64"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -18,7 +18,7 @@ const (
 )
 
 func PWHash(pass, salt string) string {
-	return b64.RawStdEncoding.EncodeToString(DeriveKey(KDFTYPE, pass, salt))
+	return base64.RawStdEncoding.EncodeToString(DeriveKey(KDFTYPE, pass, salt))
 }
 
 func PWCheck(pw, pwc, salt string) bool {
@@ -26,7 +26,7 @@ func PWCheck(pw, pwc, salt string) bool {
 }
 
 func RandomString(size int) string {
-	return b64.RawStdEncoding.EncodeToString(Nonce(size))
+	return base64.RawStdEncoding.EncodeToString(Nonce(size))
 }
 
 func Salt(size int) string {
@@ -36,12 +36,12 @@ func Salt(size int) string {
 func Seal(plaintext, secret string) (chipertext string) {
 	pt := []byte(plaintext)
 	key := DeriveKey(KDFTYPE, secret, "Shared Secret, No Salt needed")
-	chipertext = b64.RawStdEncoding.EncodeToString(SymmetricSeal(pt, key))
+	chipertext = base64.RawStdEncoding.EncodeToString(SymmetricSeal(pt, key))
 	return chipertext
 }
 
 func Open(chipertext, secret string) (plaintext string) {
-	ct, err := b64.RawStdEncoding.DecodeString(chipertext)
+	ct, err := base64.RawStdEncoding.DecodeString(chipertext)
 	check(err)
 	key := DeriveKey(KDFTYPE, secret, "Shared Secret, No Salt needed")
 	plaintext = string(SymmetricOpen(ct, key))
