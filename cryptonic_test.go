@@ -5,7 +5,6 @@ import (
 
 	"github.com/matryer/is"
 	log "github.com/sirupsen/logrus"
-	//	"gitlab.com/echtwerner/cryptonic"
 )
 
 func TestBasic(t *testing.T) {

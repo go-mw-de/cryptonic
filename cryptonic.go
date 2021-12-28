@@ -21,9 +21,11 @@ func PWHash(pass, salt string) string {
 	return base64.RawStdEncoding.EncodeToString(DeriveKey(KDFTYPE, pass, salt))
 }
 
+/*
 func DeriveKey(KDFTYPE, pass, salt string) {
 	panic("unimplemented")
 }
+*/
 
 func PWCheck(pw, pwc, salt string) bool {
 	return PWHash(pw, salt) == pwc
