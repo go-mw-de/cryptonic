@@ -1,10 +1,11 @@
 package cryptonic_test
 
 import (
+	"testing"
+
 	"github.com/matryer/is"
 	log "github.com/sirupsen/logrus"
 	//	"gitlab.com/echtwerner/cryptonic"
-	"testing"
 )
 
 func TestBasic(t *testing.T) {
