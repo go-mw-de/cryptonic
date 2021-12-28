@@ -1,10 +1,11 @@
-package cryptonic
+package cryptonic_test
 
 import (
 	"encoding/base64"
 	"testing"
 
 	"github.com/matryer/is"
+	"gitlab.com/echtwerner/cryptonic"
 )
 
 var kdfTypes = []string{"pkbdf2", "argon2i", "argon2id"}
@@ -26,7 +27,7 @@ func decode(s string) (bytes []byte) {
 func TestDeriveKey(t *testing.T) {
 	is := is.New(t)
 	for _, v := range kdfTypes {
-		is.Equal(DeriveKey(v, testData["pass"], testData["salt"]), decode(testData[v]))
+		is.Equal(cryptonic.DeriveKey(v, testData["pass"], testData["salt"]), decode(testData[v]))
 	}
 }
 
@@ -34,19 +35,19 @@ func TestArgon2iDeriveKey(t *testing.T) {
 	is := is.New(t)
 	p := []byte(testData["pass"])
 	s := []byte(testData["salt"])
-	is.Equal(Argon2iDeriveKey(p, s), decode(testData["argon2i"]))
+	is.Equal(cryptonic.Argon2iDeriveKey(p, s), decode(testData["argon2i"]))
 }
 
 func TestArgon2idDeriveKey(t *testing.T) {
 	is := is.New(t)
 	p := []byte(testData["pass"])
 	s := []byte(testData["salt"])
-	is.Equal(Argon2idDeriveKey(p, s), decode(testData["argon2id"]))
+	is.Equal(cryptonic.Argon2idDeriveKey(p, s), decode(testData["argon2id"]))
 }
 
 func TestPKBDF2DeriveKey(t *testing.T) {
 	is := is.New(t)
 	p := []byte(testData["pass"])
 	s := []byte(testData["salt"])
-	is.Equal(PKBDF2DeriveKey(p, s), decode(testData["pkbdf2"]))
+	is.Equal(cryptonic.PKBDF2DeriveKey(p, s), decode(testData["pkbdf2"]))
 }

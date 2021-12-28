@@ -1,0 +1,21 @@
+package cryptonic_test
+
+import (
+	"github.com/matryer/is"
+	log "github.com/sirupsen/logrus"
+	//	"gitlab.com/echtwerner/cryptonic"
+	"testing"
+)
+
+func TestBasic(t *testing.T) {
+	is := is.New(t)
+	is.True(true)
+}
+
+// # Helper Funtions
+
+func check(e error) {
+	if e != nil {
+		log.Fatal(e)
+	}
+}
