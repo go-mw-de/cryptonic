@@ -56,11 +56,9 @@ func Open(chipertext, secret string) (plaintext string) {
 
 func Nonce(size int) []byte {
 	nonce := make([]byte, size)
-	log.Infof("nonce init:\t\t len %d / cap %d \n------------\n", len(nonce), cap(nonce))
 	if _, err := rand.Read(nonce); err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Infof("nonce calc:\t\t len %d / cap %d \n------------\n", len(nonce), cap(nonce))
 	return nonce
 }
 
