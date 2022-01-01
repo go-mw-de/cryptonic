@@ -52,7 +52,6 @@ func AESEncrypt(key, msg []byte) []byte {
 
 	// Never use more than 2^32 random nonces with a given key because of the risk of a repeat.
 	nonce := Nonce(aead.NonceSize())
-	fmt.Printf("nonce for encrypt:\t %x\n------------\n", nonce)
 	// First Argument to Seal send nonce to destination (dst) or in otherwords nonce will be appended
 	return aead.Seal(nonce, nonce, msg, nil)
 
@@ -66,7 +65,6 @@ func AESDecrypt(key, msg []byte) []byte {
 
 	// split ct in nonce and data
 	nonce := msg[:aead.NonceSize()]
-	fmt.Printf("------------\nnonce for decrypt:\t %x\n------------\n", nonce)
 	ct := msg[aead.NonceSize():]
 	pt, err := aead.Open(nil, nonce, ct, nil)
 	check(err)
@@ -80,8 +78,6 @@ func XCPEncrypt(key, msg []byte) []byte {
 	check(err)
 	// Select a random nonce, and leave capacity for the ciphertext.
 	nonce := Nonce(aead.NonceSize())
-
-	fmt.Printf("nonce for encrypt:\t %x\n------------\n", nonce)
 	// First Argument to Seal send nonce to destination (dst) or in otherwords nonce will be appended
 	return aead.Seal(nonce, nonce, msg, nil)
 
@@ -93,7 +89,6 @@ func XCPDecrypt(key, msg []byte) []byte {
 
 	// split ct in nonce and data
 	nonce := msg[:aead.NonceSize()]
-	fmt.Printf("------------\nnonce for decrypt:\t %x\n------------\n", nonce)
 	ct := msg[aead.NonceSize():]
 	pt, err := aead.Open(nil, nonce, ct, nil)
 	check(err)

@@ -54,18 +54,10 @@ func AsymmetricSign(message []byte, sk *rsa.PrivateKey) []byte {
 	if len(hsum) != AsymmetricHashSumSize {
 		panic("Hashsum Length does not match AsymmetricHashSumSize")
 	}
-	fmt.Printf("AsymmetricSign sig:\t\t %x\n------------\n", sig)
-	fmt.Printf("AsymmetricSign hash:\t\t %x\n------------\n", hsum)
 	sig2, out := sliceForAppend(hsum, len(sig))
-	fmt.Printf("AsymmetricSign out:\t %x\n------------\n", out)
-	fmt.Printf("AsymmetricSign sig2:\t %x\n------------\n", sig2)
 	copy(out, sig)
-	fmt.Printf("AsymmetricSign out:\t %x\n------------\n", out)
-	fmt.Printf("AsymmetricSign sig2:\t %x\n------------\n", sig2)
 	ret := make([]byte, len(sig)+AsymmetricHashSumSize)
 	copy(ret, sig2)
-	fmt.Printf("AsymmetricSign ret:\t %x\n------------\n", ret)
-
 	return ret
 }
 
@@ -81,9 +73,6 @@ func AsymmetricSignWithHash(message []byte, sk *rsa.PrivateKey) ([]byte, []byte)
 func AsymmetricVerify(message []byte, pk *rsa.PublicKey, signature []byte) bool {
 	hsum := signature[:AsymmetricHashSumSize]
 	sig := signature[AsymmetricHashSumSize:]
-	fmt.Printf("AsymmetricVerify sig:\t\t %x\n------------\n", sig)
-	fmt.Printf("AsymmetricVerify hash:\t\t %x\n------------\n", hsum)
-
 	return RSAVerify(pk, hsum, sig)
 }
 
