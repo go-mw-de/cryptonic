@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	. "gitlab.com/echtwerner/cryptonic"
+	. "gitlab.com/go-mw-de/cryptonic"
 )
 
 // # Main Programm Functions
