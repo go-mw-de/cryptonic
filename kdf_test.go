@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/matryer/is"
-	"gitlab.com/go-mw-de/cryptonic"
+	"github.com/go-mw-de/cryptonic"
 )
 
 var kdfTypes = []string{"pkbdf2", "argon2i", "argon2id"}

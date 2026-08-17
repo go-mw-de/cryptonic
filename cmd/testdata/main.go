@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"gitlab.com/go-mw-de/cryptonic"
+	"github.com/go-mw-de/cryptonic"
 )
 
 func main() {
