@@ -1,4 +1,4 @@
-module github.com/go-mw-de/cryptonic
+module go-mw.de/pkg/cryptonic
 
 go 1.26
 

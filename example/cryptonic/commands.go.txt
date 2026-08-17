@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	. "gitlab.com/go-mw-de/cryptonic"
+	. "go-mw.de/pkg/cryptonic"
 )
 
 // # Main Programm Functions
