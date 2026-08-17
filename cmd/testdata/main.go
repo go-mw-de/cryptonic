@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/go-mw-de/cryptonic"
+	"go-mw.de/pkg/cryptonic"
 )
 
 func main() {
